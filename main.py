@@ -10,7 +10,8 @@ from google.cloud import firestore
 import base64, hashlib
 
 db = firestore.Client(database="web-risk-submission-operations", project="micka-sandbox-437022")
-COLL = os.environ["COLLECTION_NAME"]                         # collection name
+COLL = os.environ["COLLECTION_NAME"]    
+print(COLL)                     # collection name
 
 def _doc_id(name: str) -> str:
     """
@@ -33,7 +34,7 @@ def save_operation(name: str, url: str, payload: dict):
 def list_operations() -> list[str]:
     """Return operation names currently stored (oldest first)."""
     docs = (
-        db.collection("operations")
+        db.collection(COLL)
         .order_by("created", direction=firestore.Query.DESCENDING)
         .stream()
     )

@@ -1,4 +1,6 @@
 1. Create a new firestore collection
 
+2. gcloud secrets create qpost-sa-key   --data-file=./YOUR_SA.json
+
 2. gcloud run deploy INSTANCE_NAME --source=.   --region=europe-west3   --allow-unauthenticated   --service-account=web-risk-submiter@micka-sandbox-437022.iam.gserviceaccount.com --port=8080  --update-secrets=/var/secrets/key.json=SECRET_NAME:latest --update-env-vars="COLLECTION_NAME=COLLECTION_NAME
 "
